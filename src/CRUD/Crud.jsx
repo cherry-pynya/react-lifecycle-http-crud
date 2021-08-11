@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import fetchData from './API/fetchData';
 import PropTypes from 'prop-types';
 import Dashboard from './dashboard/dasboard';
+import Form from './form/form';
 
 export default function Crud({ server }) {
     const [data, setData] = useState([]);
@@ -19,6 +20,10 @@ export default function Crud({ server }) {
 
     };
 
+    const handleSubmit = () => {
+        
+    };
+
     return (
         <div className='crud'>
             <div className='crud-header'>
@@ -26,6 +31,7 @@ export default function Crud({ server }) {
                 <button type='button' className='crud-btn header-btn' onClick={handleUpload}></button>
             </div>
             <Dashboard data={data} deleteNote={handleDelete} />
+            <Form submit={handleSubmit} />
         </div>
     );
 }

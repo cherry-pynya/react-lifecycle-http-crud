@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import { useState } from 'react'
 
 export default function Form({ submit }) {
-    const [text, setText] = useState({
+    const [data, setText] = useState({
         text: '',
     });
 
@@ -19,7 +19,7 @@ export default function Form({ submit }) {
             <textarea 
                 name='text' 
                 className='crud-form-textarea' 
-                value={text} 
+                value={data.text} 
                 onChange={handleChange}
             ></textarea>
             <button
