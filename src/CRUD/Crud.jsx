@@ -3,25 +3,38 @@ import fetchData from './API/fetchData';
 import PropTypes from 'prop-types';
 import Dashboard from './dashboard/dasboard';
 import Form from './form/form';
+import uploadData from './API/uploadData';
+import { v4 as uuidv4 } from 'uuid';
 
 export default function Crud({ server }) {
     const [data, setData] = useState([]);
 
     useEffect(() => {
         fetchData(server)
-            .then(res => setData(res));
+            .then(res => setData(res), (reject) => {
+                throw new Error('Server disconected');
+            });
     }, [server])
 
     const handleDelete = () => {
-
+        
     };
 
     const handleUpload = () => {
 
     };
 
-    const handleSubmit = () => {
-        
+    const handleSubmit = (obj) => {
+        const id = uuidv4();
+        const data = {
+            id: id,
+            content: obj.text,
+        }
+        uploadData(server, data);
+        fetchData(server)
+            .then(res => setData(res), (reject) => {
+                throw new Error('Server disconected');
+            });
     };
 
     return (

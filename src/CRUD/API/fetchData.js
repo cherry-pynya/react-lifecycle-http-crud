@@ -9,7 +9,7 @@ export default function fetchData(server) {
                 if (status === 0 || (status >= 200 && status < 400)) {
                     resolve(xhr.response);
                 } else {
-                    reject(undefined);
+                    reject([]);
                 };
             };
         };

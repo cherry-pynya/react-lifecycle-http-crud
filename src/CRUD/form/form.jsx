@@ -6,12 +6,18 @@ export default function Form({ submit }) {
         text: '',
     });
 
-    const handleChange = () => {
-
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setText(prevForm => ({...prevForm, [name]: value}));
     };
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        console.log(data)
+        submit(data);
+        setText({
+            text: '',
+        });
     };
 
     return (
