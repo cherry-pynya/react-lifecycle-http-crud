@@ -1,4 +1,5 @@
 import Crud from './CRUD/Crud';
+import './App.css';
 
 const server = 'http://localhost:7777';
 
